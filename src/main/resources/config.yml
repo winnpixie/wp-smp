@@ -1,0 +1,32 @@
+connections:
+  join:
+    whitelist-ignore-full: true
+    broadcast: true
+    message: "&a+ {player_name}"
+    first-timer-message: "&c{player_name} &6joined for the first time!"
+    message-of-the-day: [
+      "&r",
+      "&eHello, &c{player_name}!",
+      "&eType &c/togglelogstripping &eto toggle log stripping.",
+      "&r"
+    ]
+  quit:
+    broadcast: true
+    message: "&c- {player_name}"
+
+player:
+  chat:
+    message-format: "%s &7>>&r %s"
+    format-colors: true
+    green-text: true
+  combat:
+    hot-hands: true
+  interactions:
+    head-pats: true
+  death:
+    philza-mode: true
+    drop-head: true
+
+world:
+  nether-roof: false
+  sitting: false

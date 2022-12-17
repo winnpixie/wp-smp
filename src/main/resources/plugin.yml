@@ -1,0 +1,30 @@
+name: "SMP-Core"
+version: "0.0.1"
+description: "Primarily non-invasive/non-impactful additions"
+author: "Hannah"
+website: "https://winnpixie.xyz/"
+main: "io.github.winnpixie.smp.SmpCore"
+api-version: 1.19
+
+commands:
+  hat:
+    description: "Wear your current item on your head"
+    usage: "/hat"
+  ping:
+    description: "Display [user]'s ping in milliseconds"
+    usage: "/ping [user]"
+    aliases: [ "latency" ]
+  reload-config:
+    description: "Reloads the plugin's configuration file"
+    usage: "/reload-configuration"
+    aliases: [ "reload-config", "reloadconfig" "rl-cfg", "rlcfg" ]
+  share-experience:
+    description: "Sends <exp> from you to <user>"
+    usage: "/share-experience <exp> <user>"
+    aliases: [ "share-exp", "shareexp", "send-experience", "send-exp", "sendexp" ]
+  sit:
+    description: "Sit on the current stair block you're looking at"
+    usage: "/sit"
+  togglelogstripping:
+    description: "Toggle the ability to strip logs with an axe"
+    usage: "/togglelogstripping"
