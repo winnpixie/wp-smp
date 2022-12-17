@@ -17,7 +17,7 @@ commands:
   reload-config:
     description: "Reloads the plugin's configuration file"
     usage: "/reload-configuration"
-    aliases: [ "reload-config", "reloadconfig" "rl-cfg", "rlcfg" ]
+    aliases: [ "reload-config", "reloadconfig", "rl-cfg", "rlcfg" ]
   share-experience:
     description: "Sends <exp> from you to <user>"
     usage: "/share-experience <exp> <user>"
