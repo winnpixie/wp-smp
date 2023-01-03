@@ -1,4 +1,5 @@
 connections:
+  broadcast-to-lan: false
   join:
     whitelist-ignore-full: true
     broadcast: true
@@ -30,3 +31,5 @@ player:
 world:
   nether-roof: false
   sitting: false
+  combat:
+    blood-splatter: true

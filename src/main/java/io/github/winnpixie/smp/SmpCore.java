@@ -30,7 +30,7 @@ public class SmpCore extends JavaPlugin {
         annoc.setConfiguration(this.getConfig()).wrapClass(Config.class).load();
 
         this.registerListener(new ConnectionListener(this));
-        // this.registerListener(new EntityActionListener(this));
+        this.registerListener(new EntityActionListener(this));
         this.registerListener(new PlayerActionListener(this));
         this.registerListener(new WorldEventListener(this));
 

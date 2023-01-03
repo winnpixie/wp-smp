@@ -9,9 +9,31 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.nio.charset.StandardCharsets;
+
 public class ConnectionListener extends BaseListener {
     public ConnectionListener(SmpCore plugin) {
         super(plugin);
+
+        String motd = plugin.getServer().getMotd();
+        int port = plugin.getServer().getPort();
+        plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin, () -> {
+            if (!Config.BROADCAST_TO_LAN) return;
+
+            // According to https://wiki.vg/Server_List_Ping#Ping_via_LAN_.28Open_to_LAN_in_Singleplayer.29
+            try (DatagramSocket socket = new DatagramSocket()) {
+                var payload = String.format("[MOTD]%s[/MOTD][AD]%d[/AD]", motd, port).getBytes(StandardCharsets.UTF_8);
+                DatagramPacket packet = new DatagramPacket(payload, payload.length,
+                        InetAddress.getByName("224.0.2.60"), 4445);
+                socket.send(packet);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }, 0, 30);
     }
 
     @EventHandler

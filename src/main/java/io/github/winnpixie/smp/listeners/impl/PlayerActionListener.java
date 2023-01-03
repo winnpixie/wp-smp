@@ -3,6 +3,7 @@ package io.github.winnpixie.smp.listeners.impl;
 import io.github.winnpixie.smp.Config;
 import io.github.winnpixie.smp.SmpCore;
 import io.github.winnpixie.smp.listeners.BaseListener;
+import io.github.winnpixie.smp.listeners.impl.utilities.BloodHelper;
 import io.github.winnpixie.smp.utilities.ChatHelper;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -12,11 +13,13 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
 import org.bukkit.block.Skull;
-import org.bukkit.entity.*;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
+import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -92,6 +95,11 @@ public class PlayerActionListener extends BaseListener {
         event.getPlayer().spawnParticle(Particle.VILLAGER_HAPPY, nextBlock.getLocation().add(0.5, 0.5, 0.5),
                 20, 0.5, 0.5, 0.5);
 
+        switch (event.getHand()) {
+            case HAND -> event.getPlayer().swingMainHand();
+            case OFF_HAND -> event.getPlayer().swingOffHand();
+        }
+
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return true;
         item.setAmount(item.getAmount() - 1);
         event.getPlayer().getInventory().setItem(event.getHand(), item);
@@ -153,46 +161,6 @@ public class PlayerActionListener extends BaseListener {
 
         event.getPlayer().openSign(signState);
         event.setCancelled(true);
-
-        return true;
-    }
-
-    @EventHandler
-    private void onEntityAttackEntity(EntityDamageByEntityEvent event) {
-        if (Config.HEAD_PATS) {
-            if (doHeadPat(event)) return; // Don't execute anything else, this was a friendly gesture.
-        }
-
-        if (Config.HOT_HANDS) {
-            if (doHotHandsAttack(event)) return;
-        }
-    }
-
-    private boolean doHeadPat(EntityDamageByEntityEvent event) {
-        if (event.getCause() != EntityDamageEvent.DamageCause.ENTITY_ATTACK) return false;
-        if (!(event.getDamager() instanceof Player player)) return false;
-        if (!player.isSneaking()) return false;
-        if (!(event.getEntity() instanceof Tameable receiver)) return false;
-        if (!receiver.isTamed()) return false;
-
-        receiver.getWorld().spawnParticle(Particle.HEART, receiver.getEyeLocation(), 5,
-                0.5, 0.5, 0.5);
-        event.setCancelled(true);
-
-        return true;
-    }
-
-    private boolean doHotHandsAttack(EntityDamageByEntityEvent event) {
-        if (event.getCause() != EntityDamageEvent.DamageCause.ENTITY_ATTACK) return false;
-        if (!(event.getDamager() instanceof Player player)) return false;
-        if (player.getFireTicks() < 1) return false;
-
-        var victim = event.getEntity();
-        if (victim.getFireTicks() < 100) { // 5 seconds
-            victim.setFireTicks(victim.getFireTicks() + 200); // Add 10 seconds
-        } else {
-            victim.setFireTicks(victim.getFireTicks() + 100); // Add 5 seconds
-        }
 
         return true;
     }

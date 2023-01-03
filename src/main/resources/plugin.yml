@@ -14,7 +14,7 @@ commands:
     description: "Display [user]'s ping in milliseconds"
     usage: "/ping [user]"
     aliases: [ "latency" ]
-  reload-config:
+  reload-configuration:
     description: "Reloads the plugin's configuration file"
     usage: "/reload-configuration"
     aliases: [ "reload-config", "reloadconfig", "rl-cfg", "rlcfg" ]
