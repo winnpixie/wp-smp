@@ -6,9 +6,6 @@ import java.util.List;
 
 public class Config {
     // Connections
-    @Link(path = "connections.broadcast-to-lan")
-    public static boolean BROADCAST_TO_LAN;
-
     // Connections::Join
     @Link(path = "connections.join.whitelist-ignore-full")
     public static boolean WHITELIST_IGNORE_FULL;

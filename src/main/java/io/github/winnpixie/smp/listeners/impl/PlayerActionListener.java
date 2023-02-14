@@ -3,8 +3,9 @@ package io.github.winnpixie.smp.listeners.impl;
 import io.github.winnpixie.smp.Config;
 import io.github.winnpixie.smp.SmpCore;
 import io.github.winnpixie.smp.listeners.BaseListener;
-import io.github.winnpixie.smp.listeners.impl.utilities.BloodHelper;
-import io.github.winnpixie.smp.utilities.ChatHelper;
+import io.github.winnpixie.smp.utilities.TextHelper;
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -45,12 +46,12 @@ public class PlayerActionListener extends BaseListener {
 
     @EventHandler
     private void onChat(AsyncPlayerChatEvent event) {
-        event.setFormat(ChatHelper.format(Config.CHAT_FORMAT));
+        event.setFormat(TextHelper.translateColorCode(Config.CHAT_FORMAT));
 
         if (Config.CHAT_GREEN_TEXT && event.getMessage().startsWith(">")) {
-            event.setMessage("\u00A7a" + event.getMessage());
+            event.setMessage(TextHelper.translateColorCode("&a" + event.getMessage()));
         } else if (Config.FORMAT_CHAT_COLORS) {
-            event.setMessage(ChatHelper.format(event.getMessage()));
+            event.setMessage(TextHelper.translateColorCode(event.getMessage()));
         }
     }
 
@@ -125,7 +126,9 @@ public class PlayerActionListener extends BaseListener {
         if (!axes.contains(item.getType())) return false;
 
         if (getPlugin().getPlayerData(event.getPlayer().getUniqueId()).canStripLogs) return false;
-        event.getPlayer().sendMessage(ChatHelper.format("&cREMINDER: &eYou have log stripping disabled."));
+
+        event.getPlayer().spigot().sendMessage(new ComponentBuilder("REMINDER: ").color(ChatColor.RED)
+                .append("You have log stripping disabled.").color(ChatColor.YELLOW).create());
         event.setCancelled(true);
 
         return true;
@@ -144,7 +147,8 @@ public class PlayerActionListener extends BaseListener {
         var ownerName = skullState.getOwningPlayer().getName();
         if (ownerName == null) return false;
 
-        event.getPlayer().sendMessage(String.format(ChatHelper.format("&eThis head belongs to &c%s"), ownerName));
+        event.getPlayer().spigot().sendMessage(new ComponentBuilder("This head belongs to ").color(ChatColor.YELLOW)
+                .append(ownerName).color(ChatColor.RED).create());
         event.setCancelled(true);
 
         return true;

@@ -1,4 +1,4 @@
-package io.github.winnpixie.smp.listeners.impl.utilities;
+package io.github.winnpixie.smp.utilities;
 
 import io.github.winnpixie.smp.SmpCore;
 import org.bukkit.Material;

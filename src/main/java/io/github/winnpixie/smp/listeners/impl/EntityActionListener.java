@@ -3,7 +3,7 @@ package io.github.winnpixie.smp.listeners.impl;
 import io.github.winnpixie.smp.Config;
 import io.github.winnpixie.smp.SmpCore;
 import io.github.winnpixie.smp.listeners.BaseListener;
-import io.github.winnpixie.smp.listeners.impl.utilities.BloodHelper;
+import io.github.winnpixie.smp.utilities.BloodHelper;
 import org.bukkit.Particle;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;

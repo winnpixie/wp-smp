@@ -1,5 +1,4 @@
 connections:
-  broadcast-to-lan: false
   join:
     whitelist-ignore-full: true
     broadcast: true

@@ -2,7 +2,9 @@ package io.github.winnpixie.smp.commands.impl;
 
 import io.github.winnpixie.smp.SmpCore;
 import io.github.winnpixie.smp.commands.BaseCommand;
-import io.github.winnpixie.smp.utilities.ChatHelper;
+import io.github.winnpixie.smp.utilities.TextHelper;
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -17,22 +19,23 @@ public class PingCommand extends BaseCommand {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (args.length < 1) {
             if (!(sender instanceof Player)) {
-                sender.sendMessage(ChatHelper.PLAYERS_ONLY);
+                sender.spigot().sendMessage(TextHelper.PLAYERS_ONLY);
                 return true;
             }
 
-            sender.sendMessage(ChatHelper.format(String.format("&eYour ping is &c%dms", ((Player) sender).getPing())));
+            sender.spigot().sendMessage(new ComponentBuilder("Your ping is ").color(ChatColor.YELLOW)
+                    .append("%dms".formatted(((Player) sender).getPing())).color(ChatColor.RED).create());
             return true;
         }
 
         var player = getPlugin().getServer().getPlayerExact(args[0]);
         if (player == null) {
-            sender.sendMessage(ChatHelper.INVALID_TARGET);
+            sender.spigot().sendMessage(TextHelper.INVALID_TARGET);
             return true;
         }
-
-        sender.sendMessage(ChatHelper.format(String.format("&c%s's &eping is &c%dms", player.getDisplayName(),
-                player.getPing())));
+        sender.spigot().sendMessage(new ComponentBuilder("%s's".formatted(player.getDisplayName())).color(ChatColor.RED)
+                .append(" ping is ").color(ChatColor.YELLOW)
+                .append("%dms".formatted(player.getPing())).color(ChatColor.RED).create());
         return true;
     }
 }
