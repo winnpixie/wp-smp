@@ -19,11 +19,11 @@ public class ConnectionListener extends BaseListener {
         if (Config.BROADCAST_JOINS) {
             if (!event.getPlayer().hasPlayedBefore() && !Config.FIRST_TIMER_MESSAGE.isEmpty()) {
                 // Send first-timer's message
-                event.setJoinMessage(TextHelper.translateColorCode(Config.FIRST_TIMER_MESSAGE
+                event.setJoinMessage(TextHelper.formatColors(Config.FIRST_TIMER_MESSAGE
                         .replace("{player_name}", event.getPlayer().getName())));
             } else if (!Config.JOIN_MESSAGE.isEmpty()) {
                 // Send normal custom join message
-                event.setJoinMessage(TextHelper.translateColorCode(Config.JOIN_MESSAGE
+                event.setJoinMessage(TextHelper.formatColors(Config.JOIN_MESSAGE
                         .replace("{player_name}", event.getPlayer().getName())));
             }
         } else {
@@ -31,7 +31,7 @@ public class ConnectionListener extends BaseListener {
         }
 
         for (var line : Config.MOTD_LINES) {
-            event.getPlayer().spigot().sendMessage(TextHelper.toComponents(TextHelper.translateColorCode(line)
+            event.getPlayer().spigot().sendMessage(TextHelper.toComponents(TextHelper.formatColors(line)
                     .replace("{player_name}", event.getPlayer().getDisplayName())));
         }
     }
@@ -56,7 +56,7 @@ public class ConnectionListener extends BaseListener {
 
         if (Config.QUIT_MESSAGE.isEmpty()) return;
 
-        event.setQuitMessage(TextHelper.translateColorCode(Config.QUIT_MESSAGE
+        event.setQuitMessage(TextHelper.formatColors(Config.QUIT_MESSAGE
                 .replace("{player_name}", event.getPlayer().getDisplayName())));
     }
 }

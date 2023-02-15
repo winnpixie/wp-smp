@@ -46,12 +46,12 @@ public class PlayerActionListener extends BaseListener {
 
     @EventHandler
     private void onChat(AsyncPlayerChatEvent event) {
-        event.setFormat(TextHelper.translateColorCode(Config.CHAT_FORMAT));
+        event.setFormat(TextHelper.formatColors(Config.CHAT_FORMAT));
 
         if (Config.CHAT_GREEN_TEXT && event.getMessage().startsWith(">")) {
-            event.setMessage(TextHelper.translateColorCode("&a" + event.getMessage()));
+            event.setMessage(TextHelper.formatColors("&a" + event.getMessage()));
         } else if (Config.FORMAT_CHAT_COLORS) {
-            event.setMessage(TextHelper.translateColorCode(event.getMessage()));
+            event.setMessage(TextHelper.formatColors(event.getMessage()));
         }
     }
 
