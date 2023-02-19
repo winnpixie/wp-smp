@@ -1,4 +1,4 @@
-package io.github.winnpixie.smp.utilities;
+package io.github.winnpixie.wpsmp.utilities;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;

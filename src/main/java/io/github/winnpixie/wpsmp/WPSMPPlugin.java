@@ -1,24 +1,24 @@
-package io.github.winnpixie.smp;
+package io.github.winnpixie.wpsmp;
 
 import io.github.winnpixie.annoc.Annoc;
-import io.github.winnpixie.smp.commands.BaseCommand;
-import io.github.winnpixie.smp.commands.impl.HatCommand;
-import io.github.winnpixie.smp.commands.impl.PingCommand;
-import io.github.winnpixie.smp.commands.impl.ToggleLogStrippingCommand;
-import io.github.winnpixie.smp.commands.impl.admin.ReloadConfigurationCommand;
-import io.github.winnpixie.smp.listeners.BaseListener;
-import io.github.winnpixie.smp.listeners.impl.ConnectionListener;
-import io.github.winnpixie.smp.listeners.impl.EntityActionListener;
-import io.github.winnpixie.smp.listeners.impl.PlayerActionListener;
-import io.github.winnpixie.smp.listeners.impl.WorldEventListener;
-import io.github.winnpixie.smp.utilities.PlayerData;
+import io.github.winnpixie.wpsmp.commands.BaseCommand;
+import io.github.winnpixie.wpsmp.commands.impl.HatCommand;
+import io.github.winnpixie.wpsmp.commands.impl.PingCommand;
+import io.github.winnpixie.wpsmp.commands.impl.ToggleLogStrippingCommand;
+import io.github.winnpixie.wpsmp.commands.impl.admin.ReloadConfigurationCommand;
+import io.github.winnpixie.wpsmp.listeners.BaseListener;
+import io.github.winnpixie.wpsmp.listeners.impl.ConnectionListener;
+import io.github.winnpixie.wpsmp.listeners.impl.EntityActionListener;
+import io.github.winnpixie.wpsmp.listeners.impl.PlayerActionListener;
+import io.github.winnpixie.wpsmp.listeners.impl.WorldEventListener;
+import io.github.winnpixie.wpsmp.utilities.PlayerData;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class SmpCore extends JavaPlugin {
+public class WPSMPPlugin extends JavaPlugin {
     private final Map<UUID, PlayerData> playerData = new HashMap<>();
 
     public final Annoc annoc = new Annoc();

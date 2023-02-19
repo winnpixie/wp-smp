@@ -1,4 +1,4 @@
-package io.github.winnpixie.smp;
+package io.github.winnpixie.wpsmp;
 
 import io.github.winnpixie.annoc.Link;
 

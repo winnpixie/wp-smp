@@ -1,8 +1,8 @@
-package io.github.winnpixie.smp.commands.impl;
+package io.github.winnpixie.wpsmp.commands.impl;
 
-import io.github.winnpixie.smp.SmpCore;
-import io.github.winnpixie.smp.commands.BaseCommand;
-import io.github.winnpixie.smp.utilities.TextHelper;
+import io.github.winnpixie.wpsmp.WPSMPPlugin;
+import io.github.winnpixie.wpsmp.commands.BaseCommand;
+import io.github.winnpixie.wpsmp.utilities.TextHelper;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -16,7 +16,7 @@ public class ShareExperienceCommand extends BaseCommand {
             .color(ChatColor.RED)
             .create();
 
-    public ShareExperienceCommand(SmpCore plugin) {
+    public ShareExperienceCommand(WPSMPPlugin plugin) {
         super(plugin, "share-experience");
     }
 

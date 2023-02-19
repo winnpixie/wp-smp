@@ -1,16 +1,16 @@
-package io.github.winnpixie.smp.listeners.impl;
+package io.github.winnpixie.wpsmp.listeners.impl;
 
-import io.github.winnpixie.smp.Config;
-import io.github.winnpixie.smp.SmpCore;
-import io.github.winnpixie.smp.listeners.BaseListener;
-import io.github.winnpixie.smp.utilities.TextHelper;
+import io.github.winnpixie.wpsmp.Config;
+import io.github.winnpixie.wpsmp.WPSMPPlugin;
+import io.github.winnpixie.wpsmp.listeners.BaseListener;
+import io.github.winnpixie.wpsmp.utilities.TextHelper;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class ConnectionListener extends BaseListener {
-    public ConnectionListener(SmpCore plugin) {
+    public ConnectionListener(WPSMPPlugin plugin) {
         super(plugin);
     }
 

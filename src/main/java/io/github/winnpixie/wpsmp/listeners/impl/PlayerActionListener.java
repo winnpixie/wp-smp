@@ -1,9 +1,9 @@
-package io.github.winnpixie.smp.listeners.impl;
+package io.github.winnpixie.wpsmp.listeners.impl;
 
-import io.github.winnpixie.smp.Config;
-import io.github.winnpixie.smp.SmpCore;
-import io.github.winnpixie.smp.listeners.BaseListener;
-import io.github.winnpixie.smp.utilities.TextHelper;
+import io.github.winnpixie.wpsmp.Config;
+import io.github.winnpixie.wpsmp.WPSMPPlugin;
+import io.github.winnpixie.wpsmp.listeners.BaseListener;
+import io.github.winnpixie.wpsmp.utilities.TextHelper;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.GameMode;
@@ -40,7 +40,7 @@ public class PlayerActionListener extends BaseListener {
             Material.NETHERITE_AXE
     );
 
-    public PlayerActionListener(SmpCore plugin) {
+    public PlayerActionListener(WPSMPPlugin plugin) {
         super(plugin);
     }
 

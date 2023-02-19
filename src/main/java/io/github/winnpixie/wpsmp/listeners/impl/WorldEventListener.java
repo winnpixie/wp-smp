@@ -1,8 +1,8 @@
-package io.github.winnpixie.smp.listeners.impl;
+package io.github.winnpixie.wpsmp.listeners.impl;
 
-import io.github.winnpixie.smp.Config;
-import io.github.winnpixie.smp.SmpCore;
-import io.github.winnpixie.smp.listeners.BaseListener;
+import io.github.winnpixie.wpsmp.Config;
+import io.github.winnpixie.wpsmp.WPSMPPlugin;
+import io.github.winnpixie.wpsmp.listeners.BaseListener;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
@@ -17,7 +17,7 @@ public class WorldEventListener extends BaseListener {
             Material.NETHERITE_SWORD // Netherite contains gold.
     );
 
-    public WorldEventListener(SmpCore plugin) {
+    public WorldEventListener(WPSMPPlugin plugin) {
         super(plugin);
 
         plugin.getServer().getScheduler().runTaskTimer(plugin, () -> {

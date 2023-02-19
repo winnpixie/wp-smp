@@ -1,4 +1,4 @@
-package io.github.winnpixie.smp.utilities;
+package io.github.winnpixie.wpsmp.utilities;
 
 import java.util.concurrent.ThreadLocalRandom;
 

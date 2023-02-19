@@ -1,6 +1,6 @@
-package io.github.winnpixie.smp.utilities;
+package io.github.winnpixie.wpsmp.utilities;
 
-import io.github.winnpixie.smp.SmpCore;
+import io.github.winnpixie.wpsmp.WPSMPPlugin;
 import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.EntityType;
@@ -15,7 +15,7 @@ public class BloodHelper {
     private static BlockData lavaBlockData;
     private static BlockData endPortalBlockData;
 
-    public static void init(SmpCore plugin) {
+    public static void init(WPSMPPlugin plugin) {
         redstoneBlockData = plugin.getServer().createBlockData(Material.REDSTONE_BLOCK);
         coalBlockData = plugin.getServer().createBlockData(Material.COAL_BLOCK);
         boneBlockData = plugin.getServer().createBlockData(Material.BONE_BLOCK);

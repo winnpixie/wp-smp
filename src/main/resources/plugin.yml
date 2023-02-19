@@ -1,9 +1,9 @@
-name: "SMP-Core"
+name: "wpSMP"
 version: "0.0.1"
 description: "Primarily non-invasive/non-impactful additions"
 author: "Hannah"
 website: "https://winnpixie.xyz/"
-main: "io.github.winnpixie.smp.SmpCore"
+main: "io.github.winnpixie.wpsmp.WPSMPPlugin"
 api-version: 1.19
 
 commands:
